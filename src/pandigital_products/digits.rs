@@ -5,12 +5,11 @@ fn get_digits(num: u128) -> Vec<u32> {
         .collect()
 }
 
-pub fn get_all_digits(nums: Vec<u128>) -> Vec<u32> {
+pub fn get_all_digits(nums: &[u128]) -> Vec<u32> {
     let mut digits = Vec::new();
     for ele in nums {
-        digits.append(&mut get_digits(ele));
+        digits.append(&mut get_digits(*ele));
     }
-
     digits
 }
 
@@ -29,14 +28,14 @@ mod tests {
 
     #[test]
     fn different_tests_of_get_all_digits() {
-        assert_eq!(get_all_digits(vec![0]), vec![0]);
-        assert_eq!(get_all_digits(vec![0, 123]), vec![0, 1, 2, 3]);
+        assert_eq!(get_all_digits(&vec![0]), vec![0]);
+        assert_eq!(get_all_digits(&vec![0, 123]), vec![0, 1, 2, 3]);
         assert_eq!(
-            get_all_digits(vec![0, 123, 5032]),
+            get_all_digits(&vec![0, 123, 5032]),
             vec![0, 1, 2, 3, 5, 0, 3, 2]
         );
         assert_eq!(
-            get_all_digits(vec![0, 123, 5032, 9]),
+            get_all_digits(&vec![0, 123, 5032, 9]),
             vec![0, 1, 2, 3, 5, 0, 3, 2, 9]
         );
     }
