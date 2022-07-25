@@ -1,7 +1,7 @@
 mod digits;
 use digits::get_all_digits;
 
-pub fn numbers_are_pandigital_in_total(nums: &[u128]) -> bool {
+fn numbers_are_pandigital_in_total(nums: &[u128]) -> bool {
     let mut digits = get_all_digits(nums);
     digits.sort();
     let mut counter = 1;
