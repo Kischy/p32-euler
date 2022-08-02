@@ -3,7 +3,7 @@ use pandigital_products::PandigitalProducts;
 mod pandigital_products;
 
 fn main() {
-    println!("Calculation started...\n\n");
+    println!("Calculation started ...\n\n");
     let mut answer_p32 = 0;
 
     let mut pandigital_products = Vec::new();
