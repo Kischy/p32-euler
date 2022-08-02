@@ -1,5 +1,6 @@
 mod digits;
 
+#[derive(Debug)]
 pub struct PandigitalProduct {
     multiplicand: u128,
     multiplier: u128,
@@ -15,12 +16,33 @@ impl PandigitalProduct {
         }
     }
 
-    fn is_pandigital(&self) -> bool {
+    pub fn is_pandigital(&self) -> bool {
         return numbers_are_pandigital_in_total(&[
             self.multiplicand,
             self.multiplier,
             self.product,
         ]);
+    }
+
+    pub fn has_nine_digits(&self) -> bool {
+        return digits::get_all_digits(&[self.multiplicand, self.multiplier, self.product]).len()
+            == 9;
+    }
+
+    pub fn product_eq(&self, other: &Self) -> bool {
+        self.product == other.product
+    }
+
+    pub fn get_product(&self) -> u128 {
+        self.product
+    }
+}
+
+impl PartialEq for PandigitalProduct {
+    fn eq(&self, other: &Self) -> bool {
+        self.multiplicand == other.multiplicand
+            && self.multiplier == other.multiplier
+            && self.product == other.product
     }
 }
 
@@ -65,6 +87,9 @@ mod tests {
         assert_eq!(PandigitalProduct::new(1, 2, 3).is_pandigital(), true);
         assert_eq!(PandigitalProduct::new(123, 456, 789).is_pandigital(), true);
         assert_eq!(PandigitalProduct::new(39, 186, 7254).is_pandigital(), true);
-        assert_eq!(PandigitalProduct::new(39, 186, 72549).is_pandigital(), false);
+        assert_eq!(
+            PandigitalProduct::new(39, 186, 72549).is_pandigital(),
+            false
+        );
     }
 }
