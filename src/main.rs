@@ -22,7 +22,7 @@ fn main() {
     }
 
     println!(
-        "The answer to problem 30 of project Euler is {}.",
+        "The answer to problem 32 of project Euler is {}.",
         answer_p32
     );
 }
